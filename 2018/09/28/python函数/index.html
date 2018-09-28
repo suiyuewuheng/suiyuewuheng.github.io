@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="函数名其实就是指向函数的变量，指向一个函数对象的引用，完全可以把函数名赋给一个变量，相当于给这个函数起了一个“别名”   函数名其实就是指向函数的变量12345&amp;gt;&amp;gt;&amp;gt; abs(-10)10&amp;gt;&amp;gt;&amp;gt; b=abs&amp;gt;&amp;gt;&amp;gt; b(-10)10    简化多行式123456789101112131415&amp;gt;&amp;gt;&amp;gt; def add(x):...">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python物语-函数">
+<meta property="og:url" content="http://yoursite.com/2018/09/28/python函数/index.html">
+<meta property="og:site_name" content="suiyuewuheng">
+<meta property="og:description" content="函数名其实就是指向函数的变量，指向一个函数对象的引用，完全可以把函数名赋给一个变量，相当于给这个函数起了一个“别名”   函数名其实就是指向函数的变量12345&amp;gt;&amp;gt;&amp;gt; abs(-10)10&amp;gt;&amp;gt;&amp;gt; b=abs&amp;gt;&amp;gt;&amp;gt; b(-10)10    简化多行式123456789101112131415&amp;gt;&amp;gt;&amp;gt; def add(x):...">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/09/28/python函数/9EEF29267EF240D3BEEAF50F0E4FA88B">
+<meta property="og:updated_time" content="2018-09-28T13:04:20.184Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python物语-函数">
+<meta name="twitter:description" content="函数名其实就是指向函数的变量，指向一个函数对象的引用，完全可以把函数名赋给一个变量，相当于给这个函数起了一个“别名”   函数名其实就是指向函数的变量12345&amp;gt;&amp;gt;&amp;gt; abs(-10)10&amp;gt;&amp;gt;&amp;gt; b=abs&amp;gt;&amp;gt;&amp;gt; b(-10)10    简化多行式123456789101112131415&amp;gt;&amp;gt;&amp;gt; def add(x):...">
+<meta name="twitter:image" content="http://yoursite.com/2018/09/28/python函数/9EEF29267EF240D3BEEAF50F0E4FA88B">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/28/python函数/"/>
+
+
+
+
+
+  <title>Python物语-函数 | suiyuewuheng</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">suiyuewuheng</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Go father</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/28/python函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaofangqiang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="suiyuewuheng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python物语-函数</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-28T21:04:44+08:00">
+                2018-09-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/09/28/python函数/" class="leancloud_visitors" data-flag-title="Python物语-函数">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>函数名其实就是指向函数的变量，指向一个函数对象的引用，完全可以把函数名赋给一个变量，相当于给这个函数起了一个“别名”</p>
+</blockquote>
+<blockquote>
+<p>函数名其实就是指向函数的变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; abs(-10)</span><br><span class="line">10</span><br><span class="line">&gt;&gt;&gt; b=abs</span><br><span class="line">&gt;&gt;&gt; b(-10)</span><br><span class="line">10</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>简化多行式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; def add(x):</span><br><span class="line">...     return x+x</span><br><span class="line">... </span><br><span class="line">&gt;&gt;&gt; alist = [1,2,3,4,5]</span><br><span class="line">&gt;&gt;&gt; temp = []</span><br><span class="line">&gt;&gt;&gt; for num in alist:</span><br><span class="line">...     temp.append(add(num))</span><br><span class="line">... </span><br><span class="line">&gt;&gt;&gt; temp</span><br><span class="line">[2, 4, 6, 8, 10]</span><br><span class="line">&gt;&gt;&gt; temp2 = []</span><br><span class="line">&gt;&gt;&gt; temp2 = [add(num) for num in alist]</span><br><span class="line">&gt;&gt;&gt; temp2</span><br><span class="line">[2, 4, 6, 8, 10]</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>例子：求某个数的多次方<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; def power(x,n):</span><br><span class="line">...     s=1</span><br><span class="line">...     while(n&gt;0):</span><br><span class="line">...         n=n-1</span><br><span class="line">...         s=s*x</span><br><span class="line">...     return s</span><br><span class="line">...  运行：</span><br><span class="line">&gt;&gt;&gt; power(2,3)</span><br><span class="line">8</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<h4 id="定义默认参数"><a href="#定义默认参数" class="headerlink" title="定义默认参数"></a>定义默认参数</h4><p>*tuple_args **dict_args<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">def greet(a=&apos;world&apos;):  </span><br><span class="line">    print &apos;hello&apos;,a  </span><br><span class="line"></span><br><span class="line">greet()  </span><br><span class="line">greet(&apos;Bart&apos;)</span><br><span class="line">运行：</span><br><span class="line">hello world</span><br><span class="line">hello Bart</span><br><span class="line"></span><br><span class="line">默认参数需在非默认参数之后</span><br><span class="line">&gt;&gt;&gt; def bar(x=87,y):</span><br><span class="line">...     return x*y</span><br><span class="line">... </span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1</span><br><span class="line">SyntaxError: non-default argument follows default argument</span><br><span class="line">&gt;&gt;&gt; def bar(y,x=34):</span><br><span class="line">...     return x*y</span><br><span class="line">... </span><br><span class="line">&gt;&gt;&gt; bar(10,23)</span><br><span class="line">230</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"></span><br><span class="line">小案例:</span><br><span class="line">&gt;&gt;&gt; def reg(name,sex=&quot;male&quot;):</span><br><span class="line">...     print &quot;%s is %s &quot; % (name,&quot;boy&quot; if sex == &apos;male&apos; else &quot;girl&quot;)</span><br><span class="line">... </span><br><span class="line">&gt;&gt;&gt; </span><br><span class="line">运行：</span><br><span class="line">&gt;&gt;&gt; reg(&apos;xiao&apos;)</span><br><span class="line">xiao is boy </span><br><span class="line">&gt;&gt;&gt; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">默认tuple参数</span><br><span class="line">&gt;&gt;&gt; def alist(*b):</span><br><span class="line">...     total=0</span><br><span class="line">...     for i in b:</span><br><span class="line">...             total+=i</span><br><span class="line">...     return total</span><br><span class="line">... </span><br><span class="line">&gt;&gt;&gt; alist(*blist)</span><br><span class="line">33</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">默认字典参数</span><br><span class="line">&gt;&gt;&gt; def bar(**host):</span><br><span class="line">...     return host[&apos;name&apos;]</span><br><span class="line">... </span><br><span class="line">&gt;&gt;&gt; host1=&#123;&apos;name&apos;:&apos;xiao&apos;&#125;</span><br><span class="line">&gt;&gt;&gt; bar(**host1)</span><br><span class="line">&apos;xiao&apos;</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>空函数<br>如果想定义一个什么事也不做的空函数，可以用pass语句：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def nop():</span><br><span class="line">    pass</span><br><span class="line">pass语句什么都不做，那有什么用？实际上pass可以用来作为占位符，比如现在还没想好怎么写函数的代码，就可以先放一个pass，让代码能运行起来。</span><br><span class="line"></span><br><span class="line">pass还可以用在其他语句里，比如：</span><br><span class="line"></span><br><span class="line">if age &gt;= 18:</span><br><span class="line">    pass</span><br><span class="line">缺少了pass，代码运行就会有语法错误。</span><br></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<h4 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">列表指定元素排序:</span><br><span class="line">&gt;&gt;&gt; a=[(10, 5), (3, 1), (4, 2), (8, 10)]</span><br><span class="line">&gt;&gt;&gt; a.sort(key=lambda x:x[1])</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">[(3, 1), (4, 2), (10, 5), (8, 10)]</span><br><span class="line">&gt;&gt;&gt; a.sort(key=lambda x:x[1],reverse=True)</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">[(8, 10), (10, 5), (4, 2), (3, 1)]</span><br><span class="line">&gt;&gt;&gt; a.sort(key=lambda x:x[0])</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">[(3, 1), (4, 2), (8, 10), (10, 5)]</span><br><span class="line">&gt;&gt;&gt; a.sort(key=lambda x:x[0],reverse=True)</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">[(10, 5), (8, 10), (4, 2), (3, 1)]</span><br><span class="line">&gt;&gt;&gt; </span><br><span class="line"></span><br><span class="line">两列表综合输出大的元素</span><br><span class="line">&gt;&gt;&gt; map(lambda x,y:x if x&gt;y else y, list1, list2)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<hr>
+<p>导入自己创建的库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&gt; 创建</span><br><span class="line">vim mytools.py</span><br><span class="line">#!/usr/bin/python2</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">   author:xiao</span><br><span class="line">   descrption:this is a tools</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">import time</span><br><span class="line">import os</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line">def add(x,y):</span><br><span class="line">    &apos;&apos;&apos;x: &lt;int&gt; number a</span><br><span class="line">       y: &lt;int&gt; number b</span><br><span class="line">       add(x,y) --&gt; sum of x and y </span><br><span class="line">    &apos;&apos;&apos;</span><br><span class="line">    return x+y</span><br><span class="line"></span><br><span class="line">def sub(xy):</span><br><span class="line">    return x-y  </span><br><span class="line">    </span><br><span class="line">&gt; 导入</span><br><span class="line">[root@suiyuewuheng ~]# python</span><br><span class="line">Python 2.7.5 (default, Nov  6 2016, 00:28:07) </span><br><span class="line">[GCC 4.8.5 20150623 (Red Hat 4.8.5-11)] on linux2</span><br><span class="line">Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</span><br><span class="line">&gt;&gt;&gt; import mytools</span><br><span class="line">&gt;&gt;&gt; dir(mytools)</span><br><span class="line">[&apos;__builtins__&apos;, &apos;__doc__&apos;, &apos;__file__&apos;, &apos;__name__&apos;, &apos;__package__&apos;, &apos;add&apos;, &apos;os&apos;, &apos;sub&apos;, &apos;sys&apos;, &apos;time&apos;]</span><br><span class="line">&gt;&gt;&gt; help(mytools.add)</span><br><span class="line"></span><br><span class="line">Help on function add in module mytools:</span><br><span class="line"></span><br><span class="line">add(x, y)</span><br><span class="line">    x: &lt;int&gt; number a</span><br><span class="line">    y: &lt;int&gt; number b</span><br><span class="line">    add(x,y) --&gt; sum of x and y</span><br><span class="line">(END)</span><br></pre></td></tr></table></figure></p>
+<p><img src="9EEF29267EF240D3BEEAF50F0E4FA88B" alt="image"></p>
+<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><blockquote>
+<h4 id="什么是异常？"><a href="#什么是异常？" class="headerlink" title="什么是异常？"></a>什么是异常？</h4><p>异常即是一个事件，该事件会在程序执行过程中发生，影响了程序的正常执行。<br>一般情况下，在Python无法正常处理程序时就会发生一个异常<br>异常是Python对象，表示一个错误。<br>当Python脚本发生异常时我们需要捕获处理它，否则程序会终止执行。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line">#encoding:UTF-8</span><br><span class="line">try:</span><br><span class="line">    fh=open(&quot;test.py&quot;)</span><br><span class="line">    fh.write(&quot;测试异常!!&quot;)</span><br><span class="line">except:</span><br><span class="line">    print &quot;测试有问题,执行下面语句&quot;</span><br><span class="line">print &quot;执行&quot;</span><br><span class="line"></span><br><span class="line">运行:</span><br><span class="line">[root@suiyuewuheng python]# python try.py </span><br><span class="line">测试有问题,执行下面语句</span><br><span class="line">执行</span><br><span class="line"></span><br><span class="line">&gt; 因为没有写权限，所以写入失败，抛出异常，如果给予写权限，将会咋样？如下：修改文件，给予w权限</span><br><span class="line"></span><br><span class="line">#!/usr/bin/python</span><br><span class="line">#encoding:UTF-8</span><br><span class="line">try:</span><br><span class="line">    fh=open(&quot;test.py&quot;,&apos;w&apos;)    #需要判断是否会抛出异常的代码，如果没有异常处理，python会直接停止执行程序</span><br><span class="line">    fh.write(&quot;测试异常!!&quot;)</span><br><span class="line">except:                        #这里会捕捉到上面代码中的异常，并根据异常抛出异常处理信息</span><br><span class="line">    print &quot;测试有问题,执行下面语句&quot;</span><br><span class="line">print &quot;执行&quot;                     #如果没有异常则执行else</span><br><span class="line"></span><br><span class="line">&gt; 运行：</span><br><span class="line">[root@suiyuewuheng python]# python try.py </span><br><span class="line">执行</span><br><span class="line">[root@suiyuewuheng python]# cat test.py </span><br><span class="line">测试异常!!</span><br><span class="line"></span><br><span class="line">&gt; 正确输出，没有抛出异常，信息已写入文件</span><br><span class="line"></span><br><span class="line">综上，我们可以看出，异常处理就是对程序的可执行的一种保护，使程序能依旧运行，不会因为异常错误而终止，但是不再执行异常错误里面后面的代码，而是异常块之外的代码，一句话：有异常抛出异常，继续运行异常块外程序，没有异常则不抛出异常，正确执行程序。</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h4><blockquote>
+<p>能接受函数做参数的函数  </p>
+</blockquote>
+<blockquote>
+<p>原理:变量可以指向函数–&gt;函数的参数可以接受变量–&gt;一个函数可以接受另一个函数作为参数–&gt;高阶函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; def sub(f,x,y):</span><br><span class="line">...     return f(x)+f(y)</span><br><span class="line">... </span><br><span class="line">&gt;&gt;&gt; sub(abs,-6,2)</span><br><span class="line">8</span><br><span class="line"></span><br><span class="line">再如:</span><br><span class="line">import math</span><br><span class="line">def add(x, y, f):</span><br><span class="line">    return f(x) + f(y)</span><br><span class="line"></span><br><span class="line">print add(25, 9, math.sqrt)</span><br><span class="line">math.sqrt计算x的1/2次方</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>将输入用户名格式化首字母大写，其余小写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def format_name(s):</span><br><span class="line">    return s[0].upper()+s[1:].lower()</span><br><span class="line"></span><br><span class="line">print map(format_name, [&apos;adam&apos;, &apos;LISA&apos;, &apos;barT&apos;])</span><br><span class="line">输出:[&apos;Adam&apos;, &apos;Lisa&apos;, &apos;Bart&apos;]</span><br><span class="line"></span><br><span class="line">简化:</span><br><span class="line">&gt;&gt;&gt; map(lambda x:x[0].upper()+x[1:].lower(), [&apos;adam&apos;, &apos;LISA&apos;, &apos;barT&apos;])</span><br><span class="line">输出:[&apos;Adam&apos;, &apos;Lisa&apos;, &apos;Bart&apos;]</span><br><span class="line"></span><br><span class="line">也可以用函数 title()</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>reduce()高阶内置函数<br>reduce()函数也是Python内置的一个高阶函数。reduce()函数接收的参数和 map()类似，一个函数 f，一个list，但行为和 map()不同，reduce()传入的函数 f 必须接收两个参数，reduce()对list的每个元素反复调用函数f，并返回最终结果值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def prod(x, y):</span><br><span class="line">    return x*y</span><br><span class="line"></span><br><span class="line">print reduce(prod, [2, 4, 5, 7, 12])</span><br><span class="line">运行结果:3360             //列表所有有元素的乘积</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; reduce(lambda x,y:x*y,[1,2,3,4,5])</span><br><span class="line">120</span><br><span class="line"></span><br><span class="line">求6的阶乘</span><br><span class="line">&gt;&gt;&gt; reduce(lambda x,y:x*y,range(1,7))</span><br><span class="line">720</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<h4 id="filter"><a href="#filter" class="headerlink" title="filter()"></a>filter()</h4><blockquote>
+<p>filter() 函数用于过滤序列，过滤掉不符合条件的元素，返回由符合条件元素组成的新列表。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; ages = [5, 12, 17, 18, 24, 32]</span><br><span class="line">&gt;&gt;&gt; adults = filter(lambda x:x&lt;18, ages)</span><br><span class="line">&gt;&gt;&gt; for x in adults:</span><br><span class="line">...   print(x)</span><br><span class="line">... </span><br><span class="line">5</span><br><span class="line">12</span><br><span class="line">17</span><br><span class="line">&gt;&gt;&gt; </span><br><span class="line">匹配出奇数</span><br><span class="line">&gt;&gt;&gt; a=filter(lambda x:x%2!=0, range(1,20))</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">[1, 3, 5, 7, 9, 11, 13, 15, 17, 19]</span><br><span class="line">&gt;&gt;&gt; </span><br><span class="line">匹配平方根是整数</span><br><span class="line">&gt;&gt;&gt; a=filter(lambda x:math.sqrt(x)%1==0,range(1,20))</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">[4, 16]</span><br><span class="line"></span><br><span class="line">查看某库以特定字符开头的函数</span><br><span class="line">&gt;&gt;&gt; filter(lambda fname:fname.startswith(&apos;s&apos;),dir(&apos;&apos;))  </span><br><span class="line">[&apos;split&apos;, &apos;splitlines&apos;, &apos;startswith&apos;, &apos;strip&apos;, &apos;swapcase&apos;]</span><br><span class="line">&gt;&gt;&gt; import os</span><br><span class="line">&gt;&gt;&gt; import os.path</span><br><span class="line">&gt;&gt;&gt; filter(lambda fname:fname.startswith(&apos;ch&apos;),dir(os)) </span><br><span class="line">[&apos;chdir&apos;, &apos;chmod&apos;, &apos;chown&apos;, &apos;chroot&apos;]</span><br><span class="line">&gt;&gt;&gt; filter(lambda fname:fname.startswith(&apos;ch&apos;),dir(os.path))    </span><br><span class="line">[]</span><br><span class="line">&gt;&gt;&gt; filter(lambda fname:fname.startswith(&apos;get&apos;),dir(os.path))   </span><br><span class="line">[&apos;getatime&apos;, &apos;getctime&apos;, &apos;getmtime&apos;, &apos;getsize&apos;]</span><br><span class="line">&gt;&gt;&gt; filter(lambda fname:fname.startswith(&apos;s&apos;),dir())    </span><br><span class="line">[]</span><br><span class="line">&gt;&gt;&gt; filter(lambda fname:fname.startswith(&apos;s&apos;),dir(&apos;&apos;))  </span><br><span class="line">[&apos;split&apos;, &apos;splitlines&apos;, &apos;startswith&apos;, &apos;strip&apos;, &apos;swapcase&apos;]</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<h5 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h5><blockquote>
+<p>求某数的阶乘<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; def jie(x):</span><br><span class="line">...     if x==1:</span><br><span class="line">...             return 1</span><br><span class="line">...     else:</span><br><span class="line">...             return x*jie(x-1)</span><br><span class="line">... </span><br><span class="line">&gt;&gt;&gt; jie(4)</span><br><span class="line">24</span><br><span class="line">&gt;&gt;&gt; jie(6)</span><br><span class="line">720</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>yield代替return<br><code>`</code></p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>def jyg():<br>…     return 10<br>…     return 100<br>…     return 1000<br>…<br>jyg()<br>10<br>jyg()<br>10<br>使用yield代替return，取出下一个值<br>def jyg():<br>…     yield 10<br>…     yield 100<br>…<br>jyg()</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><generator object="" jyg="" at="" 0x7fa71cb8dc80=""><br>使用next()去下一个结果</generator></p>
+<p>每次取出一个结果</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>def getnum():<br>…     while True:<br>…             yield random.randint(1,10)<br>…<br>getnum()</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><generator object="" getnum="" at="" 0x7fa71cbabdc0=""></generator></p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>getnum().next()<br>9</p>
+<p>getnum().next()<br>4<br>getnum().next()<br>3</p>
+</blockquote>
+</blockquote>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/15/python物语-内置函数/" rel="next" title="Python物语-内置函数">
+                <i class="fa fa-chevron-left"></i> Python物语-内置函数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaofangqiang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义默认参数"><span class="nav-number">1.</span> <span class="nav-text">定义默认参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lambda表达式"><span class="nav-number">2.</span> <span class="nav-text">lambda表达式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常处理"><span class="nav-number"></span> <span class="nav-text">异常处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是异常？"><span class="nav-number">1.</span> <span class="nav-text">什么是异常？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高阶函数"><span class="nav-number">2.</span> <span class="nav-text">高阶函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#filter"><span class="nav-number">3.</span> <span class="nav-text">filter()</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#递归函数"><span class="nav-number">3.1.</span> <span class="nav-text">递归函数</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaofangqiang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("uBoAHT21dpfGYd2Vn3CXLQws-gzGzoHsz", "gGRwC2DKBiW1JRqUqvwXN7d2");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
